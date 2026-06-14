@@ -1,0 +1,17 @@
+<%- include('partials/header', { title: 'My Blog' }) %>
+
+<h1>Blog Posts</h1>
+
+<% if (posts.length === 0) { %>
+    <p>No posts yet. <a href="/posts/new">Create the first post!</a></p>
+<% } else { %>
+    <% posts.forEach(post => { %>
+        <div class="post-card">
+            <h2><a href="/posts/<%= post.id %>"><%= post.title %></a></h2>
+            <p><%= post.content.substring(0, 100) %>...</p>
+            <span class="post-date"><%= post.created_at.toDateString() %></span>
+        </div>
+    <% }) %>
+<% } %>
+
+<%- include('partials/footer') %>
